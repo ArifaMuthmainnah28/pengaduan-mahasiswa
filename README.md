@@ -1,3 +1,82 @@
+# 🎓 Aplikasi Pengaduan dan Aspirasi Mahasiswa
+
+**Nama:Arifa Muthmainnah**
+**NIM:2308107010012**
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+## Deskripsi Singkat Aplikasi
+
+Aplikasi ini bertujuan untuk memfasilitasi mahasiswa dalam menyampaikan pengaduan dan aspirasi mereka secara digital kepada pihak kampus. Admin dapat melihat daftar pengaduan dan mengelola user & pengaduan. Aplikasi ini dibangun dengan Laravel, aplikasi ini mencakup fitur CRUD lengkap, validasi form, tampilan UI responsif, serta dukungan migration dan seeder untuk database.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Penjelasan Code & User Interface
+
+   ### Struktur Utama:
+    - `routes/web.php`  
+      Mendefinisikan route utama, termasuk:
+      - Halaman utama (`/`)
+      - CRUD untuk entitas pengaduan (`/pengaduans`)
+      - Dashboard untuk admin dan user
+    
+    - `app/Models/Pengaduan.php`  
+      Model Eloquent yang mewakili tabel `pengaduans`.
+    
+    - `app/Http/Controllers/PengaduanController.php`  
+      Mengelola semua logika CRUD:
+      - `index()` → Menampilkan daftar pengaduan  
+      - `create()` & `store()` → Form dan simpan pengaduan baru  
+      - `edit()` & `update()` → Edit dan simpan perubahan  
+      - `destroy()` → Hapus pengaduan  
+    
+    - `resources/views/`  
+      - `pengaduans/index.blade.php` -> Tabel pengaduan  
+      - `pengaduans/create.blade.php` -> Form tambah pengaduan  
+      - `pengaduans/edit.blade.php` -> Form edit  
+      - `dashboard-user.blade.php` -> Tampilan dashboard user  
+      - `dashboard-admin.blade.php` -> Tampilan dashboard admin
+    
+   ### Validasi
+    Dilakukan di `store()` dan `update()` menggunakan `request()->validate([...])` untuk memastikan input tidak kosong dan sesuai aturan.
+    
+   ### UI
+    Menggunakan **Bootstrap** untuk tampilan responsive dan bersih.  
+    Admin dapat melihat daftar pengaduan yang masuk dengan status, dan mahasiswa dapat membuat laporan dengan mudah melalui form yang disediakan.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Cara Instalasi Aplikasi
+
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi secara lokal:
+
+   ### 1. Clone Repositori
+    bash:
+        git clone https://github.com/ArifaMuthmainnah28/pengaduan-mahasiswa.git
+        cd pengaduan-mahasiswa
+
+   ### 2. Install Dependency
+    bash:
+       composer install
+       npm install && npm run dev
+
+   ### 3. Konfigurasi Environment
+    bash:
+       cp .env.example .env
+       php artisan key:generate
+
+   ### 4. Buat dan Jalankan Migrasi + Seeder
+    bash:
+       php artisan migrate --seed
+
+    Seeder akan menambahkan data awal seperti akun user dan pengaduan dummy.
+
+   ### 5. Jalankan Aplikasi
+    bash:
+       php artisan serve
+
+    Akses aplikasi di http://127.0.0.1:8000.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
